@@ -13,6 +13,7 @@
 
 #include <WCL/ComPtr.hpp>
 #include <wbemidl.h>
+#include "ObjectIterator.hpp"
 
 namespace WMI
 {
@@ -43,14 +44,17 @@ public:
 	//! Open a connection to the current host.
 	void open(); // throw(WMI::Exception)
 
+	//! Open a connection to a specific host.
+	void open(const tstring& host, const tstring& login, const tstring& password); // throw(WMI::Exception)
+
 	//! Open a connection to a specific host and namespace.
-	void open(const tstring& host, const tstring& nmspace); // throw(WMI::Exception)
+	void open(const tstring& host, const tstring& login, const tstring& password, const tstring& nmspace); // throw(WMI::Exception)
 
 	//! Close the connection.
 	void close();
 
 	//! Execute the query.
-	void execQuery(const tchar* query); // throw(WMI::Exception)
+	ObjectIterator execQuery(const tchar* query); // throw(WMI::Exception)
 
 	//
 	// Constants.
