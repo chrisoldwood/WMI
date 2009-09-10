@@ -36,10 +36,13 @@ TEST_CASE_END
 
 TEST_CASE(Connection, queryExecutes)
 {
-	WMI::Connection connection;
+	WMI::Connection		connection;
+	WMI::ObjectIterator	end;
 
 	connection.open();
-	connection.execQuery(TXT("SELECT * FROM Win32_OperatingSystem"));
+	WMI::ObjectIterator it = connection.execQuery(TXT("SELECT * FROM Win32_OperatingSystem"));
+
+	TEST_TRUE(it != end);
 }
 TEST_CASE_END
 
