@@ -4,6 +4,10 @@
 	Version="7.10"
 	Name="WMI"
 	ProjectGUID="{6497EA41-2782-4A79-8840-6854E22EC4F4}"
+	SccProjectName="SAK"
+	SccAuxPath="SAK"
+	SccLocalPath="SAK"
+	SccProvider="SAK"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
@@ -114,6 +118,12 @@
 				RelativePath=".\Exception.cpp">
 			</File>
 			<File
+				RelativePath=".\Object.cpp">
+			</File>
+			<File
+				RelativePath=".\ObjectIterator.cpp">
+			</File>
+			<File
 				RelativePath=".\pch.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -141,6 +151,12 @@
 			</File>
 			<File
 				RelativePath=".\Exception.hpp">
+			</File>
+			<File
+				RelativePath=".\Object.hpp">
+			</File>
+			<File
+				RelativePath=".\ObjectIterator.hpp">
 			</File>
 		</Filter>
 		<Filter
