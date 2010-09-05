@@ -8,6 +8,7 @@
 #include "Exception.hpp"
 #include <WCL/VariantVector.hpp>
 #include <Core/StringUtils.hpp>
+#include <iterator>
 
 namespace WMI
 {
