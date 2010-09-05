@@ -30,7 +30,7 @@ TEST_CASE(Connection, invalidNamsespace)
 {
 	WMI::Connection connection;
 
-	TEST_THROWS(connection.open(WMI::Connection::LOCALHOST, TXT("invalid namespace")));
+	TEST_THROWS(connection.open(WMI::Connection::LOCALHOST, TXT(""), TXT(""), TXT("invalid namespace")));
 }
 TEST_CASE_END
 
