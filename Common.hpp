@@ -16,6 +16,10 @@
 //
 //! \namespace WMI
 //! \brief     The Windows Management Instrumentation namespace.
+//!
+//! \mainpage  Windows Management Instrumentation C++ Library
+//! \section   introduction Introduction
+//! This library is a Wrapper Facade for using the WMI COM library.
 
 ////////////////////////////////////////////////////////////////////////////////
 // Standard headers.
