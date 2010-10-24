@@ -147,16 +147,16 @@
 				RelativePath=".\Test.cpp">
 			</File>
 			<File
-				RelativePath=".\TestConnection.cpp">
+				RelativePath=".\ConnectionTests.cpp">
 			</File>
 			<File
-				RelativePath=".\TestException.cpp">
+				RelativePath=".\ExceptionTests.cpp">
 			</File>
 			<File
-				RelativePath=".\TestObject.cpp">
+				RelativePath=".\ObjectTests.cpp">
 			</File>
 			<File
-				RelativePath=".\TestObjectIterator.cpp">
+				RelativePath=".\ObjectIteratorTests.cpp">
 			</File>
 		</Filter>
 		<Filter

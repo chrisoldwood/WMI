@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \file   TestException.cpp
+//! \file   ExceptionTests.cpp
 //! \brief  The unit tests for the Exception class.
 //! \author Chris Oldwood
 
@@ -12,25 +12,33 @@
 TEST_SET(Exception)
 {
 
-TEST_CASE(Exception, standardResultCode)
+TEST_CASE("exception can be constructed with a generic HRESULT and message")
 {
-	WMI::Exception e(E_FAIL, TXT("Unit Test"));
+	const HRESULT result = E_FAIL;
+	const tchar* message = TXT("Unit Test");
 
-	TEST_TRUE(e.m_result == E_FAIL);
-	TEST_TRUE(tstrstr(e.twhat(), TXT("Unit Test")) != nullptr);
+	WMI::Exception e(result, message);
+
+	TEST_TRUE(e.m_result == result);
+	TEST_TRUE(tstrstr(e.twhat(), message) != nullptr);
 }
 TEST_CASE_END
 
-TEST_CASE(Exception, wmiResultCode)
+TEST_CASE("exception constructed with a WMI error code has WMI error message")
 {
 	typedef WCL::ComPtr<IWbemLocator> IWbemLocatorPtr;
 
+	const HRESULT result = WBEM_E_DATABASE_VER_MISMATCH;
+	const tchar* myMessage = TXT("Unit Test");
+	const tchar* wmiMessage = TXT("version mismatch");
+
 	IWbemLocatorPtr locator(CLSID_WbemAdministrativeLocator);
 
-	WMI::Exception e(WBEM_E_ACCESS_DENIED, locator, TXT("Unit Test"));
+	WMI::Exception e(result, locator, myMessage);
 
-	TEST_TRUE(e.m_result == WBEM_E_ACCESS_DENIED);
-	TEST_TRUE(tstrstr(e.twhat(), TXT("Unit Test")) != nullptr);
+	TEST_TRUE(e.m_result == result);
+	TEST_TRUE(tstrstr(e.twhat(), myMessage) != nullptr);
+	TEST_TRUE(tstrstr(e.twhat(), wmiMessage) != nullptr);
 }
 TEST_CASE_END
 

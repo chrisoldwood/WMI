@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \file   TestConnection.cpp
+//! \file   ConnectionTests.cpp
 //! \brief  The unit tests for the Connection class.
 //! \author Chris Oldwood
 
@@ -10,7 +10,7 @@
 TEST_SET(Connection)
 {
 
-TEST_CASE(Connection, closedOpenClosed)
+TEST_CASE("a connection transitions from closed to open to closed")
 {
 	WMI::Connection connection;
 
@@ -26,7 +26,7 @@ TEST_CASE(Connection, closedOpenClosed)
 }
 TEST_CASE_END
 
-TEST_CASE(Connection, invalidNamsespace)
+TEST_CASE("open throws when invalid namespace specified")
 {
 	WMI::Connection connection;
 
@@ -34,7 +34,7 @@ TEST_CASE(Connection, invalidNamsespace)
 }
 TEST_CASE_END
 
-TEST_CASE(Connection, queryExecutes)
+TEST_CASE("an open connection can execute a query")
 {
 	WMI::Connection		connection;
 	WMI::ObjectIterator	end;
