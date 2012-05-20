@@ -29,6 +29,7 @@
 				MinimalRebuild="TRUE"
 				ExceptionHandling="FALSE"
 				BasicRuntimeChecks="3"
+				SmallerTypeCheck="TRUE"
 				RuntimeLibrary="1"
 				TreatWChar_tAsBuiltInType="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
@@ -41,10 +42,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/Test.exe"
-				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/Test.pdb"
 				SubSystem="1"
 				TargetMachine="1"/>
 			<Tool
@@ -79,6 +77,7 @@
 				AdditionalOptions="/EHa"
 				AdditionalIncludeDirectories="../../../Lib"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				StringPooling="TRUE"
 				ExceptionHandling="FALSE"
 				RuntimeLibrary="0"
 				TreatWChar_tAsBuiltInType="TRUE"
@@ -92,8 +91,6 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(OutDir)/Test.exe"
-				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -129,6 +126,18 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
+				RelativePath=".\ConnectionTests.cpp">
+			</File>
+			<File
+				RelativePath=".\ExceptionTests.cpp">
+			</File>
+			<File
+				RelativePath=".\ObjectIteratorTests.cpp">
+			</File>
+			<File
+				RelativePath=".\ObjectTests.cpp">
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -145,18 +154,6 @@
 			</File>
 			<File
 				RelativePath=".\Test.cpp">
-			</File>
-			<File
-				RelativePath=".\ConnectionTests.cpp">
-			</File>
-			<File
-				RelativePath=".\ExceptionTests.cpp">
-			</File>
-			<File
-				RelativePath=".\ObjectTests.cpp">
-			</File>
-			<File
-				RelativePath=".\ObjectIteratorTests.cpp">
 			</File>
 		</Filter>
 		<Filter
