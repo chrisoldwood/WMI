@@ -119,6 +119,9 @@
 				RelativePath=".\Connection.cpp">
 			</File>
 			<File
+				RelativePath=".\DateTime.cpp">
+			</File>
+			<File
 				RelativePath=".\Exception.cpp">
 			</File>
 			<File
@@ -142,6 +145,9 @@
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystem.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -154,6 +160,9 @@
 				RelativePath=".\Connection.hpp">
 			</File>
 			<File
+				RelativePath=".\DateTime.hpp">
+			</File>
+			<File
 				RelativePath=".\Exception.hpp">
 			</File>
 			<File
@@ -161,6 +170,15 @@
 			</File>
 			<File
 				RelativePath=".\ObjectIterator.hpp">
+			</File>
+			<File
+				RelativePath=".\TypedObject.hpp">
+			</File>
+			<File
+				RelativePath=".\TypedObjectIterator.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystem.hpp">
 			</File>
 		</Filter>
 		<Filter

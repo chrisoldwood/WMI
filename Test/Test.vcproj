@@ -129,6 +129,9 @@
 				RelativePath=".\ConnectionTests.cpp">
 			</File>
 			<File
+				RelativePath=".\DateTimeTests.cpp">
+			</File>
+			<File
 				RelativePath=".\ExceptionTests.cpp">
 			</File>
 			<File
@@ -154,6 +157,15 @@
 			</File>
 			<File
 				RelativePath=".\Test.cpp">
+			</File>
+			<File
+				RelativePath=".\TypedObjectIteratorTests.cpp">
+			</File>
+			<File
+				RelativePath=".\TypedObjectTests.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystemTests.cpp">
 			</File>
 		</Filter>
 		<Filter
