@@ -48,7 +48,7 @@ public:
 	Object(IWbemClassObjectPtr object);
 
 	//! Destructor.
-	~Object();
+	virtual ~Object();
 	
 	//
 	// Object properties.
@@ -63,6 +63,9 @@ public:
 	//! Get the property value for an object as a typed value.
 	template<typename T>
 	T getProperty(const tstring& name) const; // throw(WMI::Exception, ComException)
+
+	//! Get the underlying COM object.
+	IWbemClassObjectPtr get() const;
 
 	//
 	// Object methods.
@@ -87,6 +90,14 @@ inline T Object::getProperty(const tstring& name) const
 	getProperty(name, value);
 
 	return WCL::getValue<T>(value);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Get the underlying COM object.
+
+inline Object::IWbemClassObjectPtr Object::get() const
+{
+	return m_object;
 }
 
 //namespace WMI
