@@ -6,6 +6,7 @@
 #include "Common.hpp"
 #include "ObjectIterator.hpp"
 #include "Exception.hpp"
+#include <Core/BadLogicException.hpp>
 
 namespace WMI
 {
@@ -34,6 +35,28 @@ ObjectIterator::ObjectIterator(IEnumWbemClassObjectPtr enumerator)
 
 ObjectIterator::~ObjectIterator()
 {
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Dereference operator.
+
+const Object& ObjectIterator::operator*() const
+{
+	if (m_value.get() == nullptr)
+		throw Core::BadLogicException(TXT("Attempted to dereference end iterator"));
+
+	return *m_value;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Pointer-to-member operator.
+
+const Object* ObjectIterator::operator->() const
+{
+	if (m_value.get() == nullptr)
+		throw Core::BadLogicException(TXT("Attempted to dereference end iterator"));
+
+	return m_value.get();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +92,7 @@ void ObjectIterator::increment()
 	{
 		ASSERT(avail == 1);
 
-		m_value = value;
+		m_value.reset(new Object(value));
 	}
 	// End reached.
 	else
@@ -85,7 +108,7 @@ void ObjectIterator::increment()
 
 void ObjectIterator::reset()
 {
-	m_value.Release();
+	m_value.reset();
 	m_enumerator.Release();
 }
 

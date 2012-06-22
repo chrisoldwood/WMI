@@ -14,12 +14,15 @@
 #include <WCL/ComPtr.hpp>
 #include <wbemidl.h>
 #include "Object.hpp"
+#include <Core/SharedPtr.hpp>
 
 namespace WMI
 {
 
 ////////////////////////////////////////////////////////////////////////////////
 //! The iterator type used for collections of WBEM Class Objects.
+//! \note Although the iterator is copyable it only creates a shallow copy of
+//! the underlying COM object and so cannot be independently advanced.
 
 class ObjectIterator
 {
@@ -34,7 +37,7 @@ public:
 	ObjectIterator();
 
 	//! Constructor for the Begin iterator.
-	ObjectIterator(IEnumWbemClassObjectPtr enumerator);
+	ObjectIterator(IEnumWbemClassObjectPtr enumerator); // throw(WMI::Exception)
 
 	//! Destructor.
 	~ObjectIterator();
@@ -44,10 +47,13 @@ public:
 	//
 
 	//! Dereference operator.
-	Object operator*() const;
+	const Object& operator*() const;
+
+	//! Pointer-to-member operator.
+	const Object* operator->() const;
 
 	//! Advance the iterator.
-	void operator++();
+	void operator++(); // throw(WMI::Exception)
 
 	//
 	// Methods.
@@ -57,11 +63,14 @@ public:
 	bool equals(const ObjectIterator& rhs) const;
 
 private:
+	//! The value shared pointer type.
+	typedef Core::SharedPtr<Object> ValuePtr;
+
 	//
 	// Members.
 	//
 	IEnumWbemClassObjectPtr	m_enumerator;	//!< The underlyng WMI iterator.
-	IWbemClassObjectPtr		m_value;		//!< The current iterator value.
+	ValuePtr				m_value;		//!< The current iterator value.
 
 	//
 	// Internal methods.
@@ -73,16 +82,6 @@ private:
 	//! Move the iterator to the End.
 	void reset();
 };
-
-////////////////////////////////////////////////////////////////////////////////
-//! Dereference operator.
-
-inline Object ObjectIterator::operator*() const
-{
-	ASSERT(m_value.get() != nullptr);
-
-	return m_value;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Advance the iterator.

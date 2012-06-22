@@ -58,11 +58,41 @@ TEST_CASE("an iterator can be advanced to the end of the sequence")
 
 	ASSERT(it != end);
 
-	WMI::Object object = *it;
-
 	++it;
 
 	TEST_TRUE(it == end);
+}
+TEST_CASE_END
+
+TEST_CASE("an end iterator throws if dereferenced")
+{
+	WMI::ObjectIterator	end;
+
+	TEST_THROWS(*end);
+}
+TEST_CASE_END
+
+TEST_CASE("an iterator not at the end can be dereferenced")
+{
+	WMI::ObjectIterator	it = s_connection.execQuery(TXT("SELECT * FROM Win32_OperatingSystem"));
+
+	TEST_TRUE((*it).get().get() != nullptr);
+}
+TEST_CASE_END
+
+TEST_CASE("an end iterator throws if the ptr-to-member is invoked")
+{
+	WMI::ObjectIterator	end;
+
+	TEST_THROWS(end->get());
+}
+TEST_CASE_END
+
+TEST_CASE("an iterator not at the end can be invoked via the ptr-to-member operator")
+{
+	WMI::ObjectIterator	it = s_connection.execQuery(TXT("SELECT * FROM Win32_OperatingSystem"));
+
+	TEST_TRUE(it->get().get() != nullptr);
 }
 TEST_CASE_END
 
