@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="WMI Test">
+		<Project filename="../../Core/Core.cbp" />
+		<Project filename="../../WCL/Wcl.cbp" />
+		<Project filename="../WMI.cbp" />
+		<Project filename="Test.cbp" active="1">
+			<Depends filename="../../Core/Core.cbp" />
+			<Depends filename="../../WCL/Wcl.cbp" />
+			<Depends filename="../WMI.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>
