@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
-	<Workspace title="WMI Test">
+	<Workspace title="WMI Tests">
 		<Project filename="../../Core/Core.cbp" />
 		<Project filename="../../WCL/Wcl.cbp" />
 		<Project filename="../WMI.cbp" />
