@@ -44,6 +44,9 @@ public:
 	//! Open a connection to the current host.
 	void open(); // throw(WMI::Exception)
 
+	//! Open a connection to a specific host using the current credentials.
+	void open(const tstring& host); // throw(WMI::Exception)
+
 	//! Open a connection to a specific host.
 	void open(const tstring& host, const tstring& login, const tstring& password); // throw(WMI::Exception)
 

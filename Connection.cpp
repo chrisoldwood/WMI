@@ -57,6 +57,14 @@ void Connection::open()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Open a connection to a specific host using the current credentials.
+
+void Connection::open(const tstring& host)
+{
+	open(host, TXT(""), TXT(""), DEFAULT_NAMESPACE);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Open a connection to a specific host.
 
 void Connection::open(const tstring& host, const tstring& login, const tstring& password)
