@@ -39,7 +39,7 @@ void Exception::formatError(HRESULT result, IUnknown* object, const IID& iid, co
 
 	if (!wmiText.empty())
 	{
-		m_strDetails = Core::fmt(TXT("%s [0x%08X - %s]"), operation, result, wmiText.c_str());
+		m_details = Core::fmt(TXT("%s [0x%08X - %s]"), operation, result, wmiText.c_str());
 	}
 	else
 	{
@@ -53,9 +53,9 @@ void Exception::formatError(HRESULT result, IUnknown* object, const IID& iid, co
 
 		// Format the error string.
 		if (!source.empty() || !description.empty())
-			m_strDetails = Core::fmt(TXT("%s [0x%08X - %s] {%s : %s}"), operation, result, resultCode.c_str(), source.c_str(), description.c_str());
+			m_details = Core::fmt(TXT("%s [0x%08X - %s] {%s : %s}"), operation, result, resultCode.c_str(), source.c_str(), description.c_str());
 		else
-			m_strDetails = Core::fmt(TXT("%s [0x%08X - %s]"), operation, result, resultCode.c_str());
+			m_details = Core::fmt(TXT("%s [0x%08X - %s]"), operation, result, resultCode.c_str());
 	}
 }
 
