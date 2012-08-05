@@ -13,12 +13,13 @@
 
 #include "TypedObject.hpp"
 #include "DateTime.hpp"
+#include <Core/StringUtils.hpp>
 
 namespace WMI
 {
 
 ////////////////////////////////////////////////////////////////////////////////
-//! The C++ version of the Win32_OperatingSystem WMI class.
+//! The C++ facade for the Win32_OperatingSystem WMI class.
 
 class Win32_OperatingSystem : public TypedObject<Win32_OperatingSystem>
 {
@@ -36,8 +37,14 @@ public:
 	//! Operating system was last booted.
 	CDateTime LastBootUpTime() const;
 
+	//! Number of kilobytes of virtual memory currently unused and available.
+	uint64 FreeVirtualMemory() const;
+
 	//! Operating system instance within a computer system.
 	tstring Name() const;
+
+	//! Number of kilobytes of virtual memory.
+	uint64 TotalVirtualMemorySize() const;
 	
 	//
 	// Constants.
@@ -56,6 +63,16 @@ inline CDateTime Win32_OperatingSystem::LastBootUpTime() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Number of kilobytes of virtual memory currently unused and available.
+
+inline uint64 Win32_OperatingSystem::FreeVirtualMemory() const
+{
+	tstring value = getProperty<tstring>(TXT("FreeVirtualMemory"));
+
+	return Core::parse<uint64>(value);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Operating system instance within a computer system.
 
 inline tstring Win32_OperatingSystem::Name() const
@@ -63,6 +80,16 @@ inline tstring Win32_OperatingSystem::Name() const
 	return getProperty<tstring>(TXT("Name"));
 }
 	
+////////////////////////////////////////////////////////////////////////////////
+//! Number of kilobytes of virtual memory.
+
+inline uint64 Win32_OperatingSystem::TotalVirtualMemorySize() const
+{
+	tstring value = getProperty<tstring>(TXT("TotalVirtualMemorySize"));
+
+	return Core::parse<uint64>(value);
+}
+
 //namespace WMI
 }
 
