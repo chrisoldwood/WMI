@@ -27,6 +27,9 @@ public:
 	//! Default constructor.
 	Connection();
 
+	//! Open a connection to a specific host using the current credentials.
+	Connection(const tstring& host); // throw(WMI::Exception)
+
 	//! Destructor.
 	~Connection();
 	
