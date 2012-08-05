@@ -146,6 +146,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Win32_LogicalDisk.cpp">
+			</File>
+			<File
 				RelativePath=".\Win32_OperatingSystem.cpp">
 			</File>
 		</Filter>
@@ -176,6 +179,9 @@
 			</File>
 			<File
 				RelativePath=".\TypedObjectIterator.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_LogicalDisk.hpp">
 			</File>
 			<File
 				RelativePath=".\Win32_OperatingSystem.hpp">
