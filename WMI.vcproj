@@ -4,10 +4,6 @@
 	Version="7.10"
 	Name="WMI"
 	ProjectGUID="{6497EA41-2782-4A79-8840-6854E22EC4F4}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
