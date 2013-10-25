@@ -1,0 +1,23 @@
+Development Structure
+---------------------
+
+The source folder structure is required by the solution & projects to be like
+this:-
+
++-<application>
+| +-<tests>
++-Lib
+  +-Core
+  +-WCL
+  +-WMI
+
+The following commands will create that structure by cloning the various
+application and library repositories:-
+
+C:\> mkdir Win32\Lib
+C:\> git clone https://github.com/chrisoldwood/Core.git Win32\Lib\Core
+C:\> git clone https://github.com/chrisoldwood/WCL.git Win32\Lib\WCL
+C:\> git clone https://github.com/chrisoldwood/WMI.git Win32\Lib\WMI
+
+Chris Oldwood 
+22nd October 2013
