@@ -3,3 +3,8 @@
 [Rr]elease
 *.ncb
 *.suo
+
+# Code::Blocks
+*.layout
+*.depend
+*.gch
