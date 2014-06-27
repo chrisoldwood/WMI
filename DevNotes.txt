@@ -7,9 +7,11 @@ this:-
 +-<application>
 | +-<tests>
 +-Lib
-  +-Core
-  +-WCL
-  +-WMI
+| +-Core
+| +-WCL
+| +-WMI
+| | +-Test
++-Scripts
 
 The following commands will create that structure by cloning the various
 application and library repositories:-
@@ -18,6 +20,21 @@ C:\> mkdir Win32\Lib
 C:\> git clone https://github.com/chrisoldwood/Core.git Win32\Lib\Core
 C:\> git clone https://github.com/chrisoldwood/WCL.git Win32\Lib\WCL
 C:\> git clone https://github.com/chrisoldwood/WMI.git Win32\Lib\WMI
+<optional>
+C:\> git clone https://github.com/chrisoldwood/Scripts.git Win32\Scripts
+
+Command Line Builds
+-------------------
+
+Included in the scripts folder is one for building via the command line:-
+
+C:\> Win32\Scripts\SetVars vc71
+C:\> Win32\Scripts\Build debug Win32\Lib\WMI\Test\Test.sln
+
+There is also one for upgrading to a later version of Visual C++:-
+
+C:\> Win32\Scripts\SetVars vc100
+C:\> Win32\Scripts\Upgrade Win32\Lib\WMI\Test\Test.sln
 
 Chris Oldwood 
 22nd October 2013
