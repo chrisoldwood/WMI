@@ -9,6 +9,7 @@
 #include <WCL/VariantVector.hpp>
 #include <Core/StringUtils.hpp>
 #include <iterator>
+#include <algorithm>
 
 namespace WMI
 {
@@ -33,6 +34,27 @@ Object::Object(IWbemClassObjectPtr object)
 
 Object::~Object()
 {
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Query if the object has the named property.
+
+bool Object::hasProperty(const tstring& name) const
+{
+	ASSERT(m_object.get() != nullptr);
+
+	// Request the property names from the underlying object.
+	SAFEARRAY* array = nullptr;
+
+	HRESULT result = m_object->GetNames(nullptr, ALL_PROPERTIES, nullptr, &array);
+
+	if (FAILED(result))
+		throw Exception(result, m_object, TXT("Failed to retrieve the objects' property names"));
+
+	// Copy the property names to the output buffer.
+	WCL::VariantVector<BSTR> strings(array, VT_BSTR);	
+
+	return (std::find(strings.begin(), strings.end(), name) != strings.end());
 }
 
 ////////////////////////////////////////////////////////////////////////////////

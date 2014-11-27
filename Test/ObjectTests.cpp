@@ -79,5 +79,12 @@ TEST_CASE("property values can be coerced to a specific type")
 }
 TEST_CASE_END
 
+TEST_CASE("the object can be queried to see if a property exists")
+{
+	TEST_TRUE(object.hasProperty(TXT("LastBootUpTime")));
+	TEST_FALSE(object.hasProperty(TXT("__INVALID_PROPERTY_NAME__")));
+}
+TEST_CASE_END
+
 }
 TEST_SET_END

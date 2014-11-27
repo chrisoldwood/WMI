@@ -54,6 +54,9 @@ public:
 	// Object properties.
 	//
 
+	//! Query if the object has the named property.
+	bool hasProperty(const tstring& name) const; // throw(WMI::Exception)
+
 	//! Get the names of the supported properties.
 	size_t getPropertyNames(PropertyNames& names, PropertyTypes types = NONSYSTEM_PROPERTIES) const; // throw(WMI::Exception)
 
