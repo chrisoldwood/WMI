@@ -108,76 +108,16 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
-			<File
-				RelativePath=".\Connection.cpp">
-			</File>
-			<File
-				RelativePath=".\DateTime.cpp">
-			</File>
-			<File
-				RelativePath=".\Exception.cpp">
-			</File>
-			<File
-				RelativePath=".\Object.cpp">
-			</File>
-			<File
-				RelativePath=".\ObjectIterator.cpp">
-			</File>
-			<File
-				RelativePath=".\pch.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"/>
-				</FileConfiguration>
-			</File>
+			Name="WMI Classes"
+			Filter="">
 			<File
 				RelativePath=".\Win32_LogicalDisk.cpp">
 			</File>
 			<File
-				RelativePath=".\Win32_OperatingSystem.cpp">
-			</File>
-		</Filter>
-		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
-			<File
-				RelativePath=".\Common.hpp">
-			</File>
-			<File
-				RelativePath=".\Connection.hpp">
-			</File>
-			<File
-				RelativePath=".\DateTime.hpp">
-			</File>
-			<File
-				RelativePath=".\Exception.hpp">
-			</File>
-			<File
-				RelativePath=".\Object.hpp">
-			</File>
-			<File
-				RelativePath=".\ObjectIterator.hpp">
-			</File>
-			<File
-				RelativePath=".\TypedObject.hpp">
-			</File>
-			<File
-				RelativePath=".\TypedObjectIterator.hpp">
-			</File>
-			<File
 				RelativePath=".\Win32_LogicalDisk.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystem.cpp">
 			</File>
 			<File
 				RelativePath=".\Win32_OperatingSystem.hpp">
@@ -196,10 +136,63 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			Name="Core"
+			Filter="">
+			<File
+				RelativePath=".\Connection.cpp">
+			</File>
+			<File
+				RelativePath=".\Connection.hpp">
+			</File>
+			<File
+				RelativePath=".\DateTime.cpp">
+			</File>
+			<File
+				RelativePath=".\DateTime.hpp">
+			</File>
+			<File
+				RelativePath=".\Exception.cpp">
+			</File>
+			<File
+				RelativePath=".\Exception.hpp">
+			</File>
+			<File
+				RelativePath=".\Object.cpp">
+			</File>
+			<File
+				RelativePath=".\Object.hpp">
+			</File>
+			<File
+				RelativePath=".\ObjectIterator.cpp">
+			</File>
+			<File
+				RelativePath=".\ObjectIterator.hpp">
+			</File>
+			<File
+				RelativePath=".\TypedObject.hpp">
+			</File>
+			<File
+				RelativePath=".\TypedObjectIterator.hpp">
+			</File>
 		</Filter>
+		<File
+			RelativePath=".\Common.hpp">
+		</File>
+		<File
+			RelativePath=".\pch.cpp">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCLCompilerTool"
+					UsePrecompiledHeader="1"/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32">
+				<Tool
+					Name="VCCLCompilerTool"
+					UsePrecompiledHeader="1"/>
+			</FileConfiguration>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
