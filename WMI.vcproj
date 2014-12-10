@@ -182,6 +182,18 @@
 			<File
 				RelativePath=".\Win32_OperatingSystem.hpp">
 			</File>
+			<File
+				RelativePath=".\Win32_Process.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Process.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Service.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Service.hpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
