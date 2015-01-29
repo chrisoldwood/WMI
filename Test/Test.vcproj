@@ -144,6 +144,9 @@
 			<File
 				RelativePath=".\Win32_OperatingSystemTests.cpp">
 			</File>
+			<File
+				RelativePath=".\Win32_ServiceTests.cpp">
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\stdafx.cpp">

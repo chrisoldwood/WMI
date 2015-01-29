@@ -13,10 +13,10 @@ namespace WMI
 const tchar* Win32_LogicalDisk::WMI_CLASS_NAME = TXT("Win32_LogicalDisk");
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Construction from the underlying COM object.
+//! Construction from the underlying COM object and connection.
 
-Win32_LogicalDisk::Win32_LogicalDisk(IWbemClassObjectPtr object)
-	: TypedObject<Win32_LogicalDisk>(object)
+Win32_LogicalDisk::Win32_LogicalDisk(IWbemClassObjectPtr object, const Connection& connection)
+	: TypedObject<Win32_LogicalDisk>(object, connection)
 {
 }
 

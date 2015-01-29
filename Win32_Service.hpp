@@ -22,8 +22,8 @@ namespace WMI
 class Win32_Service : public TypedObject<Win32_Service>
 {
 public:
-	//! Construction from the underlying COM object.
-	Win32_Service(IWbemClassObjectPtr object);
+	//! Construction from the underlying COM object and connection.
+	Win32_Service(IWbemClassObjectPtr object, const Connection& connection);
 
 	//! Destructor.
 	virtual ~Win32_Service();
@@ -49,6 +49,16 @@ public:
 
 	//! The current state of the service.
 	tstring State() const;
+
+	//
+	// WMI methods.
+	//
+
+	//! Start the service.
+	uint32 StartService();
+
+	//! Stop the service.
+	uint32 StopService();
 
 	//
 	// Constants.

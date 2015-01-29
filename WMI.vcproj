@@ -193,6 +193,9 @@
 					UsePrecompiledHeader="1"/>
 			</FileConfiguration>
 		</File>
+		<File
+			RelativePath=".\TODO.txt">
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

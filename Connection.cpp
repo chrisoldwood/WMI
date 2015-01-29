@@ -8,6 +8,7 @@
 #include <WCL/ComStr.hpp>
 #include "Exception.hpp"
 #include <Core/StringUtils.hpp>
+#include "ObjectIterator.hpp"
 
 #ifdef _MSC_VER
 // Add .lib to linker.
@@ -142,7 +143,7 @@ void Connection::close()
 ////////////////////////////////////////////////////////////////////////////////
 //! Execute the query.
 
-ObjectIterator Connection::execQuery(const tchar* query)
+ObjectIterator Connection::execQuery(const tchar* query) const
 {
 	ASSERT(isOpen());
 
@@ -159,7 +160,40 @@ ObjectIterator Connection::execQuery(const tchar* query)
 	if (FAILED(result))
 		throw Exception(result, m_services, TXT("Failed to execute a WMI query"));
 
-	return ObjectIterator(enumerator);
+	return ObjectIterator(enumerator, *this);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Execute a method on an object.
+
+void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
+							const tchar* path, const tchar* method, WCL::Variant& returnValue)
+{
+	ASSERT(connection.get() != nullptr);
+
+	const WCL::ComStr objectPath(path);
+	const WCL::ComStr methodName(method);
+
+	IWbemClassObjectPtr output;
+
+	HRESULT result = connection->ExecMethod(objectPath.Get(), methodName.Get(), 0,
+											nullptr, object.get(), AttachTo(output), nullptr);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to execute method '%s' on object '%s'"), method, path);
+		throw Exception(result, connection, message.c_str());
+	}
+
+	const WCL::ComStr RETURN_VALUE(TXT("ReturnValue"));
+
+    result = output->Get(RETURN_VALUE.Get(), 0, &returnValue, NULL, 0);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to get '%s' method return value"), method);
+		throw Exception(result, connection, message.c_str());
+	}
 }
 
 //namespace WMI

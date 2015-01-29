@@ -33,8 +33,8 @@ public:
 	typedef TypedObjectIterator<T> Iterator;
 
 public:
-	//! Construction from the underlying COM object.
-	TypedObject(IWbemClassObjectPtr object);
+	//! Construction from the underlying COM object and connection.
+	TypedObject(IWbemClassObjectPtr object, const Connection& connection);
 
 	//! Destructor.
 	virtual ~TypedObject();
@@ -48,11 +48,11 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Construction from the underlying COM object.
+//! Construction from the underlying COM object and connection.
 
 template <typename T>
-inline TypedObject<T>::TypedObject(IWbemClassObjectPtr object)
-	: Object(object)
+inline TypedObject<T>::TypedObject(IWbemClassObjectPtr object, const Connection& connection)
+	: Object(object, connection)
 {
 	tstring      actualClassName = getProperty<tstring>(TXT("__CLASS"));
 	const tchar* expectedClassName = T::WMI_CLASS_NAME;

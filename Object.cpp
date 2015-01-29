@@ -22,10 +22,11 @@ Object::Object()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Construction from the underlying COM object.
+//! Construction from the underlying COM object and connection.
 
-Object::Object(IWbemClassObjectPtr object)
+Object::Object(IWbemClassObjectPtr object, const Connection& connection)
 	: m_object(object)
+	, m_connection(connection)
 {
 }
 
@@ -90,6 +91,18 @@ void Object::getProperty(const tstring& name, WCL::Variant& value) const
 
 	if (FAILED(result))
 		throw Exception(result, m_object, TXT("Failed to retrieve an objects' property value"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Execute a method on the object.
+
+void Object::execMethod(const tchar* method, WCL::Variant& returnValue)
+{
+	ASSERT(m_connection.isOpen());
+
+	const tstring path = getProperty<tstring>(TXT("__PATH"));
+
+	Connection::execMethod(m_connection.get(), get(), path.c_str(), method, returnValue);
 }
 
 //namespace WMI

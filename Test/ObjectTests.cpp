@@ -7,6 +7,7 @@
 #include <Core/UnitTest.hpp>
 #include <WMI/Object.hpp>
 #include <WMI/Connection.hpp>
+#include <WMI/ObjectIterator.hpp>
 
 TEST_SET(Object)
 {

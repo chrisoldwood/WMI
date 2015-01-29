@@ -13,10 +13,10 @@ namespace WMI
 const tchar* Win32_Process::WMI_CLASS_NAME = TXT("Win32_Process");
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Construction from the underlying COM object.
+//! Construction from the underlying COM object and connection.
 
-Win32_Process::Win32_Process(IWbemClassObjectPtr object)
-	: TypedObject<Win32_Process>(object)
+Win32_Process::Win32_Process(IWbemClassObjectPtr object, const Connection& connection)
+	: TypedObject<Win32_Process>(object, connection)
 {
 }
 

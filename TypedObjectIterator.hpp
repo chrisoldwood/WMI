@@ -115,7 +115,7 @@ TypedObjectIterator<T>::TypedObjectIterator(ObjectIterator enumerator)
 	, m_value()
 {
 	if (m_enumerator != m_end)
-		m_value.reset(new T(m_enumerator->get()));
+		m_value.reset(new T(m_enumerator->get(), m_enumerator->connection()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +174,7 @@ void TypedObjectIterator<T>::increment()
 	++m_enumerator;
 
 	if (m_enumerator != m_end)
-		m_value.reset(new T(m_enumerator->get()));
+		m_value.reset(new T(m_enumerator->get(), m_enumerator->connection()));
 	else
 		reset();
 }

@@ -13,10 +13,10 @@ namespace WMI
 const tchar* Win32_OperatingSystem::WMI_CLASS_NAME = TXT("Win32_OperatingSystem");
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Construction from the underlying COM object.
+//! Construction from the underlying COM object and connection.
 
-Win32_OperatingSystem::Win32_OperatingSystem(IWbemClassObjectPtr object)
-	: TypedObject<Win32_OperatingSystem>(object)
+Win32_OperatingSystem::Win32_OperatingSystem(IWbemClassObjectPtr object, const Connection& connection)
+	: TypedObject<Win32_OperatingSystem>(object, connection)
 {
 }
 

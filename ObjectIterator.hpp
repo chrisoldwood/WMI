@@ -29,6 +29,8 @@ class ObjectIterator
 public:
 	//! The underlying WMI iterator type.
 	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
+	//! The WMI Conection COM interface.
+	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
 	//! The iterator value type.
 	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
 
@@ -37,7 +39,7 @@ public:
 	ObjectIterator();
 
 	//! Constructor for the Begin iterator.
-	ObjectIterator(IEnumWbemClassObjectPtr enumerator); // throw(WMI::Exception)
+	ObjectIterator(IEnumWbemClassObjectPtr enumerator, const Connection& connection); // throw(WMI::Exception)
 
 	//! Destructor.
 	~ObjectIterator();
@@ -70,6 +72,7 @@ private:
 	// Members.
 	//
 	IEnumWbemClassObjectPtr	m_enumerator;	//!< The underlyng WMI iterator.
+	Connection				m_connection;	//!< The iterator's connection.
 	ValuePtr				m_value;		//!< The current iterator value.
 
 	//

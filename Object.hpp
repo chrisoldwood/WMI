@@ -15,6 +15,7 @@
 #include <wbemidl.h>
 #include <set>
 #include <WCL/Variant.hpp>
+#include "Connection.hpp"
 
 namespace WMI
 {
@@ -27,6 +28,8 @@ class Object
 public:
 	//! The underlying COM type.
 	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
+	//! The WMI Conection COM interface.
+	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
 	//! A set of property names.
 	typedef std::set<tstring> PropertyNames;
 
@@ -44,14 +47,24 @@ public:
 	//! Default constructor.
 	Object();
 
-	//! Construction from the underlying COM object.
-	Object(IWbemClassObjectPtr object);
+	//! Construction from the underlying COM object and connection.
+	Object(IWbemClassObjectPtr object, const Connection& connection);
 
 	//! Destructor.
 	virtual ~Object();
 	
 	//
-	// Object properties.
+	// Properties.
+	//
+
+	//! Get the underlying COM object.
+	IWbemClassObjectPtr get() const;
+
+	//! Get the underlying COM connection.
+	const Connection& connection() const;
+
+	//
+	// WMI Object properties.
 	//
 
 	//! Query if the object has the named property.
@@ -67,20 +80,37 @@ public:
 	template<typename T>
 	T getProperty(const tstring& name) const; // throw(WMI::Exception, ComException)
 
-	//! Get the underlying COM object.
-	IWbemClassObjectPtr get() const;
+	//
+	// WMI Object methods.
+	//
 
-	//
-	// Object methods.
-	//
+	//! Execute a method on the object.
+	void execMethod(const tchar* method, WCL::Variant& returnValue); // throw(WMI::Exception)
 
 private:
 	//
 	// Members.
 	// NB: mutable as COM interfaces are always non-const.
 	//
-	mutable IWbemClassObjectPtr	m_object;	//! The underlying COM object.
+	mutable IWbemClassObjectPtr	m_object;		//! The underlying COM object.
+	Connection					m_connection;	//! The object's connection.
 };
+
+////////////////////////////////////////////////////////////////////////////////
+//! Get the underlying COM object.
+
+inline Object::IWbemClassObjectPtr Object::get() const
+{
+	return m_object;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Get the underlying COM connection.
+
+inline const Connection& Object::connection() const
+{
+	return m_connection;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Get the property value for an object as a typed value.
@@ -93,14 +123,6 @@ inline T Object::getProperty(const tstring& name) const
 	getProperty(name, value);
 
 	return WCL::getValue<T>(value);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Get the underlying COM object.
-
-inline Object::IWbemClassObjectPtr Object::get() const
-{
-	return m_object;
 }
 
 //namespace WMI

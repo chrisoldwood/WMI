@@ -13,16 +13,29 @@
 
 #include <WCL/ComPtr.hpp>
 #include <wbemidl.h>
-#include "ObjectIterator.hpp"
+#include <WCL/Variant.hpp>
 
 namespace WMI
 {
+
+// Forward declarations.
+class ObjectIterator;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! A connection to the WMI provider on a host.
 
 class Connection
 {
+public:
+	//! The WMI Locator COM interface.
+	typedef WCL::ComPtr<IWbemLocator> IWbemLocatorPtr;
+	//! The WMI Conection COM interface.
+	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
+	//! The WMI query result type.
+	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
+	//! The WMI object type.
+	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
+
 public:
 	//! Default constructor.
 	Connection();
@@ -39,6 +52,9 @@ public:
 
 	//! Query if the connection is open.
 	bool isOpen() const;
+
+	//! Get the underlying COM connection.
+	IWbemServicesPtr get() const;
 
 	//
 	// Methods.
@@ -60,7 +76,15 @@ public:
 	void close();
 
 	//! Execute the query.
-	ObjectIterator execQuery(const tchar* query); // throw(WMI::Exception)
+	ObjectIterator execQuery(const tchar* query) const; // throw(WMI::Exception)
+
+	//
+	// Methods.
+	//
+
+	//! Execute a method on an object.
+	static void execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
+							const tchar* path, const tchar* method, WCL::Variant& returnValue); // throw(WMI::Exception)
 
 	//
 	// Constants.
@@ -72,19 +96,20 @@ public:
 	static const tstring DEFAULT_NAMESPACE;
 
 private:
-	//! The WMI Locator COM interface.
-	typedef WCL::ComPtr<IWbemLocator> IWbemLocatorPtr;
-	//! The WMI Conection COM interface.
-	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
-	//! The WMI query result type.
-	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
-
 	//
 	// Members.
 	//
-	IWbemLocatorPtr		m_locator;		//!< The underlyng WMI locator.
-	IWbemServicesPtr	m_services;		//!< The underlying WMI connection.
+	IWbemLocatorPtr				m_locator;		//!< The underlyng WMI locator.
+	mutable IWbemServicesPtr	m_services;		//!< The underlying WMI connection.
 };
+
+////////////////////////////////////////////////////////////////////////////////
+//! Get the underlying COM connection.
+
+inline Connection::IWbemServicesPtr Connection::get() const
+{
+	return m_services;
+}
 
 //namespace WMI
 }

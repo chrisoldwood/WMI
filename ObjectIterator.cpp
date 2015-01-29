@@ -16,6 +16,7 @@ namespace WMI
 
 ObjectIterator::ObjectIterator()
 	: m_enumerator()
+	, m_connection()
 	, m_value()
 {
 }
@@ -23,8 +24,9 @@ ObjectIterator::ObjectIterator()
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor for the Begin iterator.
 
-ObjectIterator::ObjectIterator(IEnumWbemClassObjectPtr enumerator)
+ObjectIterator::ObjectIterator(IEnumWbemClassObjectPtr enumerator, const Connection& connection)
 	: m_enumerator(enumerator)
+	, m_connection(connection)
 	, m_value()
 {
 	increment();
@@ -92,7 +94,7 @@ void ObjectIterator::increment()
 	{
 		ASSERT(avail == 1);
 
-		m_value.reset(new Object(value));
+		m_value.reset(new Object(value, m_connection));
 	}
 	// End reached.
 	else

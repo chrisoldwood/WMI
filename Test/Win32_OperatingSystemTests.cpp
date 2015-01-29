@@ -17,7 +17,7 @@ TEST_CASE("object can be constructed from untyped WMI object")
 {
 	WMI::ObjectIterator	it = connection.execQuery(TXT("SELECT * FROM Win32_OperatingSystem"));
 	
-	WMI::Win32_OperatingSystem object((*it).get());
+	WMI::Win32_OperatingSystem object((*it).get(), connection);
 
 	TEST_PASSED("object constructed");
 }
@@ -27,7 +27,7 @@ TEST_CASE("construction from incorrect untyped WMI object throws an exception")
 {
 	WMI::ObjectIterator	it = connection.execQuery(TXT("SELECT * FROM Win32_LogicalMemoryConfiguration"));
 
-	TEST_THROWS(WMI::Win32_OperatingSystem((*it).get()));
+	TEST_THROWS(WMI::Win32_OperatingSystem((*it).get(), connection));
 }
 TEST_CASE_END
 

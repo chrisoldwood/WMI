@@ -1,0 +1,1 @@
+- Hoist COM ptr typedefs out into separate header.
