@@ -11,8 +11,7 @@
 #pragma once
 #endif
 
-#include <WCL/ComPtr.hpp>
-#include <wbemidl.h>
+#include "Types.hpp"
 #include <set>
 #include <WCL/Variant.hpp>
 #include "Connection.hpp"
@@ -26,10 +25,6 @@ namespace WMI
 class Object
 {
 public:
-	//! The underlying COM type.
-	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
-	//! The WMI Conection COM interface.
-	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
 	//! A set of property names.
 	typedef std::set<tstring> PropertyNames;
 
@@ -99,7 +94,7 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 //! Get the underlying COM object.
 
-inline Object::IWbemClassObjectPtr Object::get() const
+inline IWbemClassObjectPtr Object::get() const
 {
 	return m_object;
 }

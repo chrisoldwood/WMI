@@ -25,12 +25,6 @@ template<typename T>
 class TypedObjectIterator
 {
 public:
-	//! The underlying WMI iterator type.
-	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
-	//! The iterator value type.
-	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
-
-public:
 	//! Constructor for the End iterator.
 	TypedObjectIterator();
 

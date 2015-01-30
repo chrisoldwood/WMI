@@ -11,8 +11,7 @@
 #pragma once
 #endif
 
-#include <WCL/ComPtr.hpp>
-#include <wbemidl.h>
+#include "Types.hpp"
 #include <WCL/Variant.hpp>
 
 namespace WMI
@@ -26,16 +25,6 @@ class ObjectIterator;
 
 class Connection
 {
-public:
-	//! The WMI Locator COM interface.
-	typedef WCL::ComPtr<IWbemLocator> IWbemLocatorPtr;
-	//! The WMI Conection COM interface.
-	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
-	//! The WMI query result type.
-	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
-	//! The WMI object type.
-	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
-
 public:
 	//! Default constructor.
 	Connection();
@@ -106,7 +95,7 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 //! Get the underlying COM connection.
 
-inline Connection::IWbemServicesPtr Connection::get() const
+inline IWbemServicesPtr Connection::get() const
 {
 	return m_services;
 }

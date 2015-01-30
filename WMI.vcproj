@@ -196,6 +196,9 @@
 		<File
 			RelativePath=".\TODO.txt">
 		</File>
+		<File
+			RelativePath=".\Types.hpp">
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

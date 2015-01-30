@@ -27,14 +27,6 @@ namespace WMI
 class ObjectIterator
 {
 public:
-	//! The underlying WMI iterator type.
-	typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
-	//! The WMI Conection COM interface.
-	typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
-	//! The iterator value type.
-	typedef WCL::ComPtr<IWbemClassObject> IWbemClassObjectPtr;
-
-public:
 	//! Constructor for the End iterator.
 	ObjectIterator();
 
