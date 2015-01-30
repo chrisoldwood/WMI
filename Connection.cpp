@@ -143,6 +143,14 @@ void Connection::close()
 ////////////////////////////////////////////////////////////////////////////////
 //! Execute the query.
 
+ObjectIterator Connection::execQuery(const tstring& query) const
+{
+	return execQuery(query.c_str());
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Execute the query.
+
 ObjectIterator Connection::execQuery(const tchar* query) const
 {
 	ASSERT(isOpen());

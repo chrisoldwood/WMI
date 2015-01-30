@@ -32,7 +32,11 @@ Win32_Service::~Win32_Service()
 
 uint32 Win32_Service::StartService()
 {
-	return 0;
+	WCL::Variant returnValue;
+
+	execMethod(TXT("StartService"), returnValue);
+
+	return WCL::getValue<uint32>(WCL::Variant(returnValue, VT_UI4));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

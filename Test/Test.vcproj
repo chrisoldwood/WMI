@@ -133,7 +133,10 @@
 				RelativePath=".\ObjectIteratorTests.cpp">
 			</File>
 			<File
-				RelativePath=".\ObjectTests.cpp">
+				RelativePath=".\ObjectMethodTests.cpp">
+			</File>
+			<File
+				RelativePath=".\ObjectPropertyTests.cpp">
 			</File>
 			<File
 				RelativePath=".\TypedObjectIteratorTests.cpp">
@@ -143,9 +146,6 @@
 			</File>
 			<File
 				RelativePath=".\Win32_OperatingSystemTests.cpp">
-			</File>
-			<File
-				RelativePath=".\Win32_ServiceTests.cpp">
 			</File>
 		</Filter>
 		<File

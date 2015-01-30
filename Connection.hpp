@@ -65,6 +65,9 @@ public:
 	void close();
 
 	//! Execute the query.
+	ObjectIterator execQuery(const tstring& query) const; // throw(WMI::Exception)
+
+	//! Execute the query.
 	ObjectIterator execQuery(const tchar* query) const; // throw(WMI::Exception)
 
 	//

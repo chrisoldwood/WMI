@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \file   ObjectTests.cpp
-//! \brief  The unit tests for the Object class.
+//! \file   ObjectPropertyTests.cpp
+//! \brief  The unit tests for the properties aspect of the Object class.
 //! \author Chris Oldwood
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@
 #include <WMI/Connection.hpp>
 #include <WMI/ObjectIterator.hpp>
 
-TEST_SET(Object)
+TEST_SET(ObjectProperty)
 {
 	WMI::Connection	connection;
 	connection.open();
