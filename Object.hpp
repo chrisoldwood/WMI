@@ -79,8 +79,17 @@ public:
 	// WMI Object methods.
 	//
 
+	//! Create the object used to pass arguments to a method.
+	IWbemClassObjectPtr createArgumentsObject(const tstring& className, const tstring& methodName) const; // throw(WMI::Exception)
+
 	//! Execute a method on the object.
 	void execMethod(const tchar* method, WCL::Variant& returnValue); // throw(WMI::Exception)
+
+	//! Execute a method on the object.
+	void execMethod(const tchar* method, IWbemClassObjectPtr arguments, WCL::Variant& returnValue); // throw(WMI::Exception)
+
+	//! Set an argument's value.
+	static void setArgument(IWbemClassObjectPtr arguments, const tstring& name, const WCL::Variant& value);
 
 private:
 	//

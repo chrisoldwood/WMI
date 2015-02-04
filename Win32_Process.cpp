@@ -5,6 +5,7 @@
 
 #include "Common.hpp"
 #include "Win32_Process.hpp"
+#include "Exception.hpp"
 
 namespace WMI
 {
@@ -25,6 +26,24 @@ Win32_Process::Win32_Process(IWbemClassObjectPtr object, const Connection& conne
 
 Win32_Process::~Win32_Process()
 {
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Terminate the process.
+
+uint32 Win32_Process::Terminate(uint32 reason)
+{
+	const tchar* TERMINATE = TXT("Terminate");
+
+	IWbemClassObjectPtr arguments = createArgumentsObject(WMI_CLASS_NAME, TERMINATE);
+
+	setArgument(arguments, TXT("Reason"), WCL::Variant((int32)reason));
+
+	WCL::Variant returnValue;
+
+	execMethod(TERMINATE, arguments, returnValue);
+
+	return WCL::getValue<uint32>(WCL::Variant(returnValue, VT_UI4));
 }
 
 //namespace WMI

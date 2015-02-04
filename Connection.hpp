@@ -78,6 +78,10 @@ public:
 	static void execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
 							const tchar* path, const tchar* method, WCL::Variant& returnValue); // throw(WMI::Exception)
 
+	//! Execute a method on the object.
+	static void execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
+							const tchar* path, const tchar* method, IWbemClassObjectPtr arguments, WCL::Variant& returnValue); // throw(WMI::Exception)
+
 	//
 	// Constants.
 	//

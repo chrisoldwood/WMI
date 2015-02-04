@@ -44,6 +44,13 @@ public:
 	int32 ThreadCount() const;
 
 	//
+	// WMI methods.
+	//
+
+	//! Terminate the process.
+	uint32 Terminate(uint32 reason = 0);
+
+	//
 	// Constants.
 	//
 

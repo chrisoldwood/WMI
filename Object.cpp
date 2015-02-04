@@ -94,6 +94,37 @@ void Object::getProperty(const tstring& name, WCL::Variant& value) const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Create the object used to pass arguments to a method.
+
+IWbemClassObjectPtr Object::createArgumentsObject(const tstring& className, const tstring& methodName) const
+{
+	IWbemServicesPtr    connection = m_connection.get();
+	WCL::ComStr         comClassName(className);
+	IWbemClassObjectPtr objectClass;
+
+	HRESULT result = connection->GetObject(comClassName.Get(), 0, nullptr, AttachTo(objectClass), nullptr);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to get WMI class definition for '%s'"), className.c_str());
+		throw Exception(result, connection, message.c_str());
+	}
+
+	WCL::ComStr         comMethodName(methodName);
+	IWbemClassObjectPtr arguments;
+
+	result = objectClass->GetMethod(comMethodName.Get(), 0, AttachTo(arguments), nullptr);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to create WMI arguments object for method '%s'"), methodName.c_str());
+		throw Exception(result, connection, message.c_str());
+	}
+
+	return arguments;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Execute a method on the object.
 
 void Object::execMethod(const tchar* method, WCL::Variant& returnValue)
@@ -103,6 +134,34 @@ void Object::execMethod(const tchar* method, WCL::Variant& returnValue)
 	const tstring path = getProperty<tstring>(TXT("__PATH"));
 
 	Connection::execMethod(m_connection.get(), get(), path.c_str(), method, returnValue);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Execute a method on the object.
+
+void Object::execMethod(const tchar* method, IWbemClassObjectPtr arguments, WCL::Variant& returnValue)
+{
+	ASSERT(m_connection.isOpen());
+
+	const tstring path = getProperty<tstring>(TXT("__PATH"));
+
+	Connection::execMethod(m_connection.get(), get(), path.c_str(), method, arguments, returnValue);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Set an argument's value.
+
+void Object::setArgument(IWbemClassObjectPtr arguments, const tstring& name, const WCL::Variant& value)
+{
+	WCL::ComStr comName(name);
+
+	HRESULT result = arguments->Put(comName.Get(), 0, const_cast<WCL::Variant*>(&value), 0);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to set '%s' argument"), name.c_str());
+		throw Exception(result, arguments, message.c_str());
+	}
 }
 
 //namespace WMI
