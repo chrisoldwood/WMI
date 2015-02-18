@@ -76,6 +76,16 @@ public:
 	T getProperty(const tstring& name) const; // throw(WMI::Exception, ComException)
 
 	//
+	// WMI Object property shorthands.
+	//
+
+	//! Full path to the class or instance - including server and namespace.
+	tstring absolutePath() const;
+
+	//! Relative path to the class or instance.
+	tstring relativePath() const;
+
+	//
 	// WMI Object methods.
 	//
 
@@ -127,6 +137,22 @@ inline T Object::getProperty(const tstring& name) const
 	getProperty(name, value);
 
 	return WCL::getValue<T>(value);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Full path to the class or instance - including server and namespace.
+
+inline tstring Object::absolutePath() const
+{
+	return getProperty<tstring>(TXT("__Path"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Relative path to the class or instance.
+
+inline tstring Object::relativePath() const
+{
+	return getProperty<tstring>(TXT("__RelPath"));
 }
 
 //namespace WMI

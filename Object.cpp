@@ -131,9 +131,7 @@ void Object::execMethod(const tchar* method, WCL::Variant& returnValue)
 {
 	ASSERT(m_connection.isOpen());
 
-	const tstring path = getProperty<tstring>(TXT("__PATH"));
-
-	Connection::execMethod(m_connection.get(), get(), path.c_str(), method, returnValue);
+	Connection::execMethod(m_connection.get(), get(), relativePath().c_str(), method, returnValue);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -143,9 +141,7 @@ void Object::execMethod(const tchar* method, IWbemClassObjectPtr arguments, WCL:
 {
 	ASSERT(m_connection.isOpen());
 
-	const tstring path = getProperty<tstring>(TXT("__PATH"));
-
-	Connection::execMethod(m_connection.get(), get(), path.c_str(), method, arguments, returnValue);
+	Connection::execMethod(m_connection.get(), get(), relativePath().c_str(), method, arguments, returnValue);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
