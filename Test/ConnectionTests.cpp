@@ -47,5 +47,25 @@ TEST_CASE("an open connection can execute a query")
 }
 TEST_CASE_END
 
+TEST_CASE("an object can be queried using it's path")
+{
+	const uint32  pid = ::GetCurrentProcessId();
+	const tstring querySelf = Core::fmt(TXT("SELECT * FROM Win32_Process WHERE ProcessId=%u"), pid);
+
+	WMI::Connection connection;
+	connection.open();
+
+	WMI::ObjectIterator	end;
+	WMI::ObjectIterator it = connection.execQuery(querySelf);
+
+	TEST_TRUE(it != end);
+
+	const tstring     path = it->relativePath();
+	const WMI::Object object = connection.getObject(path);
+
+	TEST_TRUE(object.relativePath() == path);
+}
+TEST_CASE_END
+
 }
 TEST_SET_END

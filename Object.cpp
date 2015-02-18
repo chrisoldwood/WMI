@@ -160,5 +160,13 @@ void Object::setArgument(IWbemClassObjectPtr arguments, const tstring& name, con
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Refresh the state of the object.
+
+void Object::refresh()
+{
+	m_object = m_connection.getObject(relativePath()).get();
+}
+
 //namespace WMI
 }

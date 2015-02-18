@@ -101,6 +101,13 @@ public:
 	//! Set an argument's value.
 	static void setArgument(IWbemClassObjectPtr arguments, const tstring& name, const WCL::Variant& value);
 
+	//
+	// Methods.
+	//
+
+	//! Refresh the state of the object.
+	void refresh();
+
 private:
 	//
 	// Members.

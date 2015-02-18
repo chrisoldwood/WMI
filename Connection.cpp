@@ -141,6 +141,27 @@ void Connection::close()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Get a single object using it's unique path.
+
+Object Connection::getObject(const tstring& path) const
+{
+	const WCL::ComStr objectPath(path);
+
+	IWbemClassObjectPtr object;
+
+	HRESULT result = m_services->GetObject(objectPath.Get(), WBEM_FLAG_RETURN_WBEM_COMPLETE,
+											nullptr, AttachTo(object), nullptr);
+
+	if (FAILED(result))
+	{
+		const tstring message = Core::fmt(TXT("Failed to get object from path '%s'"), path);
+		throw Exception(result, m_services, message.c_str());
+	}
+
+	return Object(object, *this);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Execute the query.
 
 ObjectIterator Connection::execQuery(const tstring& query) const

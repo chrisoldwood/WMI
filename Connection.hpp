@@ -18,6 +18,7 @@ namespace WMI
 {
 
 // Forward declarations.
+class Object;
 class ObjectIterator;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,6 +64,9 @@ public:
 
 	//! Close the connection.
 	void close();
+
+	//! Get a single object using it's unique path.
+	Object getObject(const tstring& path) const; // throw(WMI::Exception)
 
 	//! Execute the query.
 	ObjectIterator execQuery(const tstring& query) const; // throw(WMI::Exception)

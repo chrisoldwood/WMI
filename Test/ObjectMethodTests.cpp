@@ -9,6 +9,7 @@
 #include <WMI/Connection.hpp>
 #include <WMI/ObjectIterator.hpp>
 #include <WCL/Path.hpp>
+#include <WCL/Event.hpp>
 
 TEST_SET(ObjectMethod)
 {
@@ -41,6 +42,38 @@ TEST_CASE("invoking a method on the object taking no arguments returns a value")
 	const uint32 result = WCL::getValue<uint32>(WCL::Variant(returnValue, VT_UI4));
 
 	TEST_TRUE(result == ACCESS_DENIED);
+}
+TEST_CASE_END
+
+TEST_CASE("an object's state can be refreshed")
+{
+	typedef Core::SharedPtr<CEvent> EventPtr;
+	typedef std::vector<EventPtr> Events;
+
+	const uint32  pid = ::GetCurrentProcessId();
+	const tstring querySelf = Core::fmt(TXT("SELECT * FROM Win32_Process WHERE ProcessId=%u"), pid);
+
+	WMI::Connection connection;
+	connection.open();
+
+	WMI::ObjectIterator it = connection.execQuery(querySelf);
+	WMI::Object         object = *it;
+
+	const uint32 handlesBefore = object.getProperty<int32>(TXT("HandleCount"));
+
+	TEST_TRUE(handlesBefore != 0);
+
+	// create a few more handles.
+	Events handles;
+
+	for (size_t i = 0; i != 25; ++i)
+		handles.push_back(EventPtr(new CEvent(CEvent::MANUAL, CEvent::NOT_SIGNALLED)));
+
+	object.refresh();
+
+	const uint32 handlesAfter = object.getProperty<int32>(TXT("HandleCount"));
+
+	TEST_TRUE(handlesAfter != handlesBefore);
 }
 TEST_CASE_END
 
