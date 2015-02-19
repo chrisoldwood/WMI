@@ -48,10 +48,10 @@ TEST_CASE_TEARDOWN()
 }
 TEST_CASE_TEARDOWN_END
 
-TEST_CASE("select returns an iterator to a sequence of typed WMI objects")
+TEST_CASE("selecting all objects returns an iterator to a sequence of typed WMI objects")
 {
 	TestClass::Iterator end;
-	TestClass::Iterator it = TestClass::select(s_connection);
+	TestClass::Iterator it = TestClass::selectAll(s_connection);
 
 	TEST_TRUE(it != end);
 }
@@ -63,9 +63,9 @@ TEST_CASE("a typed object's state can be refreshed")
 	typedef std::vector<EventPtr> Events;
 
 	const uint32  pid = ::GetCurrentProcessId();
-	const tstring querySelf = Core::fmt(TXT("SELECT * FROM Win32_Process WHERE ProcessId=%u"), pid);
+	const tstring predicate = Core::fmt(TXT("ProcessId='%u"), pid);
 
-	TestClass::Iterator it = s_connection.execQuery(querySelf);
+	TestClass::Iterator it = TestClass::selectWhere(s_connection, predicate);
 	TestClass           object = *it;
 
 	const uint32 processId = object.ProcessId();

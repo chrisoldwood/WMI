@@ -33,7 +33,7 @@ TEST_CASE_END
 
 TEST_CASE("select returns an iterator to a sequence of Win32_OperatingSystem objects")
 {
-	WMI::Win32_OperatingSystem::Iterator it = WMI::Win32_OperatingSystem::select(connection);
+	WMI::Win32_OperatingSystem::Iterator it = WMI::Win32_OperatingSystem::selectAll(connection);
 	WMI::Win32_OperatingSystem::Iterator end;
 
 	TEST_TRUE(it != end);
@@ -42,7 +42,7 @@ TEST_CASE_END
 
 TEST_CASE("LastBootUpTime converts a WMI string property to a datetime")
 {
-	WMI::Win32_OperatingSystem::Iterator it = WMI::Win32_OperatingSystem::select(connection);
+	WMI::Win32_OperatingSystem::Iterator it = WMI::Win32_OperatingSystem::selectAll(connection);
 
 	CDateTime lastBootUpTime = it->LastBootUpTime();
 

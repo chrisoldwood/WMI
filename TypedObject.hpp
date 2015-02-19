@@ -44,7 +44,10 @@ public:
 	//
 
 	//! Select all objects of the derived type.
-	static Iterator select(Connection& connection);
+	static Iterator selectAll(Connection& connection);
+
+	//! Select those objects of the derived type matching the predicate.
+	static Iterator selectWhere(Connection& connection, const tstring& predicate);
 
 	//! Refresh the state of the object.
 	void refresh();
@@ -79,9 +82,20 @@ inline TypedObject<T>::~TypedObject()
 //! Select all objects of the derived type.
 
 template <typename T>
-inline typename TypedObject<T>::Iterator TypedObject<T>::select(Connection& connection)
+inline typename TypedObject<T>::Iterator TypedObject<T>::selectAll(Connection& connection)
 {
 	tstring query = Core::fmt(TXT("SELECT * FROM %s"), T::WMI_CLASS_NAME);
+
+	return connection.execQuery(query.c_str());
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Select those objects of the derived type matching the predicate.
+
+template <typename T>
+inline typename TypedObject<T>::Iterator TypedObject<T>::selectWhere(Connection& connection, const tstring& predicate)
+{
+	tstring query = Core::fmt(TXT("SELECT * FROM %s WHERE %s"), T::WMI_CLASS_NAME, predicate.c_str());
 
 	return connection.execQuery(query.c_str());
 }
