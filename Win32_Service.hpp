@@ -51,6 +51,25 @@ public:
 	tstring State() const;
 
 	//
+	// WMI propety helpers.
+	//
+
+	//! Is the service disabled?
+	bool IsDisabled() const;
+
+	//! Is the service started manually?
+	bool IsManual() const;
+
+	//! Does the service start automatically?
+	bool IsAutomatic() const;
+
+	//! Is the service running?
+	bool IsStopped() const;
+
+	//! Is the service running?
+	bool IsRunning() const;
+
+	//
 	// WMI methods.
 	//
 
@@ -114,6 +133,46 @@ inline tstring Win32_Service::StartMode() const
 inline tstring Win32_Service::State() const
 {
 	return getProperty<tstring>(TXT("State"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Is the service disabled?
+
+inline bool Win32_Service::IsDisabled() const
+{
+	return (StartMode() == TXT("Disabled"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Is the service started manually?
+
+inline bool Win32_Service::IsManual() const
+{
+	return (StartMode() == TXT("Manual"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Does the service start automatically?
+
+inline bool Win32_Service::IsAutomatic() const
+{
+	return (StartMode() == TXT("Auto"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Is the service running? 
+
+inline bool Win32_Service::IsStopped() const
+{
+	return (State() == TXT("Stopped"));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Is the service running? 
+
+inline bool Win32_Service::IsRunning() const
+{
+	return (State() == TXT("Running"));
 }
 
 //namespace WMI
