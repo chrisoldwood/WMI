@@ -59,6 +59,10 @@ TEST_CASE("an object's state can be refreshed")
 	WMI::ObjectIterator it = connection.execQuery(querySelf);
 	WMI::Object         object = *it;
 
+	const uint32 processId = object.getProperty<int32>(TXT("ProcessId"));
+
+	TEST_TRUE(processId == pid);
+
 	const uint32 handlesBefore = object.getProperty<int32>(TXT("HandleCount"));
 
 	TEST_TRUE(handlesBefore != 0);

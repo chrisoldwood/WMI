@@ -45,6 +45,9 @@ public:
 
 	//! Select all objects of the derived type.
 	static Iterator select(Connection& connection);
+
+	//! Refresh the state of the object.
+	void refresh();
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +84,15 @@ inline typename TypedObject<T>::Iterator TypedObject<T>::select(Connection& conn
 	tstring query = Core::fmt(TXT("SELECT * FROM %s"), T::WMI_CLASS_NAME);
 
 	return connection.execQuery(query.c_str());
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Refresh the state of the object.
+
+template <typename T>
+inline void TypedObject<T>::refresh()
+{
+	Object::refresh();
 }
 
 //namespace WMI

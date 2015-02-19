@@ -1,1 +1,3 @@
 - Factor the method arguments object out into a separate type.
+
+- Rename TypedObject::select() to selectAll() and add a selectWhere().
