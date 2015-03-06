@@ -118,7 +118,7 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Tests"
+			Name="Core"
 			Filter="">
 			<File
 				RelativePath=".\ConnectionTests.cpp">
@@ -144,6 +144,10 @@
 			<File
 				RelativePath=".\TypedObjectTests.cpp">
 			</File>
+		</Filter>
+		<Filter
+			Name="WMI Classes"
+			Filter="">
 			<File
 				RelativePath=".\Win32_OperatingSystemTests.cpp">
 			</File>

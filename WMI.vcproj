@@ -108,31 +108,25 @@
 	</References>
 	<Files>
 		<Filter
-			Name="WMI Classes"
+			Name="Build"
 			Filter="">
 			<File
-				RelativePath=".\Win32_LogicalDisk.cpp">
+				RelativePath=".\Common.hpp">
 			</File>
 			<File
-				RelativePath=".\Win32_LogicalDisk.hpp">
-			</File>
-			<File
-				RelativePath=".\Win32_OperatingSystem.cpp">
-			</File>
-			<File
-				RelativePath=".\Win32_OperatingSystem.hpp">
-			</File>
-			<File
-				RelativePath=".\Win32_Process.cpp">
-			</File>
-			<File
-				RelativePath=".\Win32_Process.hpp">
-			</File>
-			<File
-				RelativePath=".\Win32_Service.cpp">
-			</File>
-			<File
-				RelativePath=".\Win32_Service.hpp">
+				RelativePath=".\pch.cpp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
@@ -174,30 +168,46 @@
 			<File
 				RelativePath=".\TypedObjectIterator.hpp">
 			</File>
+			<File
+				RelativePath=".\Types.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="WMI Classes"
+			Filter="">
+			<File
+				RelativePath=".\Win32_LogicalDisk.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_LogicalDisk.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystem.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_OperatingSystem.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Process.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Process.hpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Service.cpp">
+			</File>
+			<File
+				RelativePath=".\Win32_Service.hpp">
+			</File>
 		</Filter>
 		<File
-			RelativePath=".\Common.hpp">
+			RelativePath=".\DevNotes.txt">
 		</File>
 		<File
-			RelativePath=".\pch.cpp">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32">
-				<Tool
-					Name="VCCLCompilerTool"
-					UsePrecompiledHeader="1"/>
-			</FileConfiguration>
+			RelativePath=".\ReadMe.txt">
 		</File>
 		<File
 			RelativePath=".\TODO.txt">
-		</File>
-		<File
-			RelativePath=".\Types.hpp">
 		</File>
 	</Files>
 	<Globals>
