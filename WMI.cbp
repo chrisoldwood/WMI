@@ -52,16 +52,26 @@
 		<Unit filename="Connection.hpp" />
 		<Unit filename="DateTime.cpp" />
 		<Unit filename="DateTime.hpp" />
+		<Unit filename="DevNotes.txt" />
 		<Unit filename="Exception.cpp" />
 		<Unit filename="Exception.hpp" />
 		<Unit filename="Object.cpp" />
 		<Unit filename="Object.hpp" />
 		<Unit filename="ObjectIterator.cpp" />
 		<Unit filename="ObjectIterator.hpp" />
+		<Unit filename="ReadMe.txt" />
+		<Unit filename="TODO.txt" />
 		<Unit filename="TypedObject.hpp" />
 		<Unit filename="TypedObjectIterator.hpp" />
+		<Unit filename="Types.hpp" />
+		<Unit filename="Win32_LogicalDisk.cpp" />
+		<Unit filename="Win32_LogicalDisk.hpp" />
 		<Unit filename="Win32_OperatingSystem.cpp" />
 		<Unit filename="Win32_OperatingSystem.hpp" />
+		<Unit filename="Win32_Process.cpp" />
+		<Unit filename="Win32_Process.hpp" />
+		<Unit filename="Win32_Service.cpp" />
+		<Unit filename="Win32_Service.hpp" />
 		<Unit filename="pch.cpp" />
 		<Extensions>
 			<code_completion />

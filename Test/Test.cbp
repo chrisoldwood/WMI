@@ -72,7 +72,8 @@
 		<Unit filename="DateTimeTests.cpp" />
 		<Unit filename="ExceptionTests.cpp" />
 		<Unit filename="ObjectIteratorTests.cpp" />
-		<Unit filename="ObjectTests.cpp" />
+		<Unit filename="ObjectMethodTests.cpp" />
+		<Unit filename="ObjectPropertyTests.cpp" />
 		<Unit filename="Test.cpp" />
 		<Unit filename="TypedObjectIteratorTests.cpp" />
 		<Unit filename="TypedObjectTests.cpp" />
