@@ -3,6 +3,7 @@
 [Rr]elease
 *.ncb
 *.suo
+*.user
 
 # Code::Blocks
 *.layout
