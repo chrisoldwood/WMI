@@ -63,7 +63,7 @@ TEST_CASE("a typed object's state can be refreshed")
 	typedef std::vector<EventPtr> Events;
 
 	const uint32  pid = ::GetCurrentProcessId();
-	const tstring predicate = Core::fmt(TXT("ProcessId='%u"), pid);
+	const tstring predicate = Core::fmt(TXT("ProcessId='%u'"), pid);
 
 	TestClass::Iterator it = TestClass::selectWhere(s_connection, predicate);
 	TestClass           object = *it;

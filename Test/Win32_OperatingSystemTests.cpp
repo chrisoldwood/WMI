@@ -25,7 +25,7 @@ TEST_CASE_END
 
 TEST_CASE("construction from incorrect untyped WMI object throws an exception")
 {
-	WMI::ObjectIterator	it = connection.execQuery(TXT("SELECT * FROM Win32_LogicalMemoryConfiguration"));
+	WMI::ObjectIterator	it = connection.execQuery(TXT("SELECT * FROM Win32_LogicalDisk"));
 
 	TEST_THROWS(WMI::Win32_OperatingSystem((*it).get(), connection));
 }
