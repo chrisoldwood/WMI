@@ -3,7 +3,7 @@
 //! \brief  The unit tests for the Connection class.
 //! \author Chris Oldwood
 
-#include "stdafx.h"
+#include "Common.hpp"
 #include <Core/UnitTest.hpp>
 #include <WMI/Connection.hpp>
 #include <WMI/ObjectIterator.hpp>

@@ -3,7 +3,7 @@
 //! \brief  The test harness entry point.
 //! \author Chris Oldwood
 
-#include "stdafx.h"
+#include "Common.hpp"
 #include <tchar.h>
 #include <Core/UnitTest.hpp>
 #include <WCL/AutoCom.hpp>

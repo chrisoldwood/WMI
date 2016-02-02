@@ -3,7 +3,7 @@
 //! \brief  The unit tests for the formatting and parsing helper functions.
 //! \author Chris Oldwood
 
-#include "stdafx.h"
+#include "Common.hpp"
 #include <Core/UnitTest.hpp>
 #include <WMI/DateTime.hpp>
 

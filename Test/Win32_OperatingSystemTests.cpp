@@ -3,7 +3,7 @@
 //! \brief  The unit tests for the Win32_OperatingSystem class.
 //! \author Chris Oldwood
 
-#include "stdafx.h"
+#include "Common.hpp"
 #include <Core/UnitTest.hpp>
 #include <WMI/Connection.hpp>
 #include <WMI/Win32_OperatingSystem.hpp>
