@@ -53,9 +53,6 @@ TEST_CASE("an object's state can be refreshed")
 	const uint32  pid = ::GetCurrentProcessId();
 	const tstring querySelf = Core::fmt(TXT("SELECT * FROM Win32_Process WHERE ProcessId=%u"), pid);
 
-	WMI::Connection connection;
-	connection.open();
-
 	WMI::ObjectIterator it = connection.execQuery(querySelf);
 	WMI::Object         object = *it;
 
