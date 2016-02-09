@@ -9,3 +9,6 @@
 *.layout
 *.depend
 *.gch
+
+# Doxygen
+/dox
