@@ -35,7 +35,7 @@ public:
 
 	//! Destructor.
 	~Connection();
-	
+
 	//
 	// Properties.
 	//
@@ -99,7 +99,7 @@ private:
 	//
 	// Members.
 	//
-	IWbemLocatorPtr				m_locator;		//!< The underlyng WMI locator.
+	IWbemLocatorPtr				m_locator;		//!< The underlying WMI locator.
 	mutable IWbemServicesPtr	m_services;		//!< The underlying WMI connection.
 };
 

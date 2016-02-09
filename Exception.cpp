@@ -65,7 +65,7 @@ void Exception::formatError(HRESULT result, IUnknown* object, const IID& iid, co
 tstring Exception::formatWmiError(HRESULT error)
 {
 	typedef WCL::ComPtr<IWbemStatusCodeText> IWbemStatusCodeTextPtr;
-	
+
 	WCL::ComStr text;
 
 	// Use the WMI error lookup first.
@@ -76,7 +76,7 @@ tstring Exception::formatWmiError(HRESULT error)
 	if (SUCCEEDED(result))
 		return Core::trimCopy(W2T(text.Get()));
 
-	// Fallback to using the standard error formatter.
+	// Fall-back to using the standard error formatter.
 	return tstring(CStrCvt::FormatError(error));
 }
 

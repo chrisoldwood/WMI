@@ -21,7 +21,7 @@ namespace WMI
 {
 
 ////////////////////////////////////////////////////////////////////////////////
-//! The base class for all type-specfic WMI objects.
+//! The base class for all type-specific WMI objects.
 //! \note The derived class must have a constant defined called WMI_CLASS_NAME
 //! that this class can use to very the WMI object type and use in queries.
 
@@ -38,7 +38,7 @@ public:
 
 	//! Destructor.
 	virtual ~TypedObject();
-	
+
 	//
 	// Methods.
 	//

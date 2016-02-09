@@ -35,7 +35,7 @@ public:
 
 	//! Destructor.
 	~ObjectIterator();
-	
+
 	//
 	// Operators.
 	//
@@ -63,7 +63,7 @@ private:
 	//
 	// Members.
 	//
-	IEnumWbemClassObjectPtr	m_enumerator;	//!< The underlyng WMI iterator.
+	IEnumWbemClassObjectPtr	m_enumerator;	//!< The underlying WMI iterator.
 	Connection				m_connection;	//!< The iterator's connection.
 	ValuePtr				m_value;		//!< The current iterator value.
 

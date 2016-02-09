@@ -51,7 +51,7 @@ public:
 	tstring State() const;
 
 	//
-	// WMI propety helpers.
+	// WMI property helpers.
 	//
 
 	//! Is the service disabled?
@@ -160,7 +160,7 @@ inline bool Win32_Service::IsAutomatic() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Is the service running? 
+//! Is the service running?
 
 inline bool Win32_Service::IsStopped() const
 {
@@ -168,7 +168,7 @@ inline bool Win32_Service::IsStopped() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Is the service running? 
+//! Is the service running?
 
 inline bool Win32_Service::IsRunning() const
 {

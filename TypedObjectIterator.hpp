@@ -36,7 +36,7 @@ public:
 
 	//! Destructor.
 	~TypedObjectIterator();
-	
+
 	//
 	// Operators.
 	//
@@ -64,8 +64,8 @@ private:
 	//
 	// Members.
 	//
-	ObjectIterator	m_end;			//!< The underlyng end iterator.
-	ObjectIterator	m_enumerator;	//!< The underlyng iterator.
+	ObjectIterator	m_end;			//!< The underlying end iterator.
+	ObjectIterator	m_enumerator;	//!< The underlying iterator.
 	ValuePtr		m_value;		//!< The current iterator value.
 
 	//

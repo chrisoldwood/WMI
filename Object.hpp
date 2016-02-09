@@ -47,7 +47,7 @@ public:
 
 	//! Destructor.
 	virtual ~Object();
-	
+
 	//
 	// Properties.
 	//
@@ -76,7 +76,7 @@ public:
 	T getProperty(const tstring& name) const; // throw(WMI::Exception, ComException)
 
 	//
-	// WMI Object property shorthands.
+	// WMI Object property short-hands.
 	//
 
 	//! Full path to the class or instance - including server and namespace.

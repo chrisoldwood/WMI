@@ -40,7 +40,7 @@ public:
 
 	//! Size of the disk drive.
 	uint64 Size() const;
-	
+
 	//
 	// Constants.
 	//
@@ -76,7 +76,7 @@ inline uint64 Win32_LogicalDisk::Size() const
 
 	return Core::parse<uint64>(value);
 }
-	
+
 //namespace WMI
 }
 

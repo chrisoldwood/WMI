@@ -32,7 +32,7 @@ bool tryParseDateTime(const tstring& value, CDateTime& datetime, tstring& offset
 
 		--digits;
 		++it;
-	}	
+	}
 
 	if (*it != '.')
 		return false;
@@ -48,14 +48,14 @@ bool tryParseDateTime(const tstring& value, CDateTime& datetime, tstring& offset
 
 		--digits;
 		++it;
-	}	
+	}
 
 	if ( (*it != '+') && (*it != '-') )
 		return false;
 	else
 		++it;
 
-	digits = 3; // Timezone offset digits.
+	digits = 3; // Time-zone offset digits.
 
 	while ( (digits != 0) && (it != end) )
 	{
@@ -64,7 +64,7 @@ bool tryParseDateTime(const tstring& value, CDateTime& datetime, tstring& offset
 
 		--digits;
 		++it;
-	}	
+	}
 
 	const int year       = Core::parse<int>(value.substr( 0, 4));
 	const int month      = Core::parse<int>(value.substr( 4, 2));

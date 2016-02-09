@@ -87,13 +87,13 @@ TEST_CASE("the object can be queried to see if a property exists")
 }
 TEST_CASE_END
 
-TEST_CASE("there is a shorthand for quering the object's absolute path")
+TEST_CASE("there is a shorthand for querying the object's absolute path")
 {
 	TEST_TRUE(object.absolutePath() == object.getProperty<tstring>(TXT("__PATH")));
 }
 TEST_CASE_END
 
-TEST_CASE("there is a shorthand for quering the object's relative path")
+TEST_CASE("there is a shorthand for querying the object's relative path")
 {
 	TEST_TRUE(object.relativePath() == object.getProperty<tstring>(TXT("__RELPATH")));
 }

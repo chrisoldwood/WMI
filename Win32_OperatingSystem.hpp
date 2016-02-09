@@ -45,7 +45,7 @@ public:
 
 	//! Number of kilobytes of virtual memory.
 	uint64 TotalVirtualMemorySize() const;
-	
+
 	//
 	// Constants.
 	//
@@ -79,7 +79,7 @@ inline tstring Win32_OperatingSystem::Name() const
 {
 	return getProperty<tstring>(TXT("Name"));
 }
-	
+
 ////////////////////////////////////////////////////////////////////////////////
 //! Number of kilobytes of virtual memory.
 

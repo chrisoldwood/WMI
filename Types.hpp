@@ -22,7 +22,7 @@ namespace WMI
 
 //! The WMI Locator COM interface.
 typedef WCL::ComPtr<IWbemLocator> IWbemLocatorPtr;
-//! The WMI Conection COM interface.
+//! The WMI Connection COM interface.
 typedef WCL::ComPtr<IWbemServices> IWbemServicesPtr;
 //! The underlying WMI iterator type.
 typedef WCL::ComPtr<IEnumWbemClassObject> IEnumWbemClassObjectPtr;
