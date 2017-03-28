@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="WMI"
 	ProjectGUID="{6497EA41-2782-4A79-8840-6854E22EC4F4}"
+	RootNamespace="WMI"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -47,7 +48,6 @@
 				MinimalRebuild="true"
 				ExceptionHandling="0"
 				BasicRuntimeChecks="3"
-				SmallerTypeCheck="true"
 				RuntimeLibrary="1"
 				TreatWChar_tAsBuiltInType="true"
 				ForceConformanceInForLoopScope="true"
