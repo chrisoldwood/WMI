@@ -154,7 +154,7 @@ Object Connection::getObject(const tstring& path) const
 
 	if (FAILED(result))
 	{
-		const tstring message = Core::fmt(TXT("Failed to get object from path '%s'"), path);
+		const tstring message = Core::fmt(TXT("Failed to get object from path '%s'"), path.c_str());
 		throw Exception(result, m_services, message.c_str());
 	}
 
