@@ -16,6 +16,9 @@
 #include <Core/StringUtils.hpp>
 #include "TypedObjectIterator.hpp"
 #include "Connection.hpp"
+#include <WCL/VariantVector.hpp>
+#include <algorithm>
+#include <Core/Functor.hpp>
 
 namespace WMI
 {
@@ -54,6 +57,15 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Predicate for comparing wide character strings (e.g. BSTR) by value.
+
+CORE_DEFINE_PREDICATE(WideStringComparator, const wchar_t*, value, rhs)
+{
+	return wcscmp(rhs, value) == 0;
+}
+CORE_END_PREDICATE
+
+////////////////////////////////////////////////////////////////////////////////
 //! Construction from the underlying COM object and connection.
 
 template <typename T>
@@ -65,8 +77,14 @@ inline TypedObject<T>::TypedObject(IWbemClassObjectPtr object, const Connection&
 
 	if (actualClassName != expectedClassName)
 	{
-		throw Core::BadLogicException(Core::fmt(TXT("Invalid WMI class '%s', expected '%s'"),
-					actualClassName.c_str(), expectedClassName));
+		WCL::Variant derivation;
+		getProperty(TXT("__DERIVATION"), derivation);
+		WCL::VariantVector<BSTR> classNames(derivation);
+		if (std::find_if(classNames.begin(), classNames.end(), WideStringComparator(T2W(expectedClassName))) == classNames.end())
+		{
+			throw Core::BadLogicException(Core::fmt(TXT("Invalid WMI class '%s', expected '%s' or one derived from it"),
+						actualClassName.c_str(), expectedClassName));
+		}
 	}
 }
 

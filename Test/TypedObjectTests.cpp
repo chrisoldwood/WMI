@@ -31,6 +31,20 @@ public:
 
 const tchar* TestClass::WMI_CLASS_NAME = TXT("Win32_Process");
 
+class TestWmiBaseClass : public WMI::TypedObject<TestWmiBaseClass>
+{
+public:
+	TestWmiBaseClass(WMI::IWbemClassObjectPtr object, const WMI::Connection& connection)
+		: WMI::TypedObject<TestWmiBaseClass>(object, connection)
+	{ }
+
+	using Object::getProperty;
+
+	static const tchar* WMI_CLASS_NAME;
+};
+
+const tchar* TestWmiBaseClass::WMI_CLASS_NAME = TXT("CIM_OperatingSystem");
+
 static WMI::Connection s_connection;
 
 TEST_SET(TypedObject)
@@ -47,6 +61,17 @@ TEST_CASE_TEARDOWN()
 	s_connection.close();
 }
 TEST_CASE_TEARDOWN_END
+
+TEST_CASE("object of WMI base type can be constructed from an object of a WMI derived type")
+{
+	WMI::ObjectIterator	it = s_connection.execQuery(TXT("SELECT * FROM CIM_OperatingSystem"));
+	
+	TestWmiBaseClass object((*it).get(), s_connection);
+	tstring          className = object.getProperty<tstring>(TXT("__CLASS"));
+
+	TEST_TRUE(className != TXT("CIM_OperatingSystem")); // Probably Win32_OperatingSystem
+}
+TEST_CASE_END
 
 TEST_CASE("selecting all objects returns an iterator to a sequence of typed WMI objects")
 {
