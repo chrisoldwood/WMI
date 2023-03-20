@@ -37,12 +37,13 @@
 			<Add option="-Wredundant-decls" />
 			<Add option="-Wcast-align" />
 			<Add option="-Wmissing-declarations" />
-			<Add option="-Wmissing-include-dirs" />
-			<Add option="-Wmissing-format-attribute" />
 			<Add option="-Wswitch-enum" />
 			<Add option="-Wswitch-default" />
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-m32" />
+			<Add option="-Wmissing-include-dirs" />
+			<Add option="-Wmissing-format-attribute" />
 			<Add option="-Werror" />
 			<Add option="-Winvalid-pch" />
 			<Add option="-Wformat-nonliteral" />
@@ -52,6 +53,9 @@
 			<Add option="-D_LIB" />
 			<Add directory="../../Lib" />
 		</Compiler>
+		<Linker>
+			<Add option="-m32" />
+		</Linker>
 		<Unit filename="Common.hpp">
 			<Option compile="1" />
 			<Option weight="0" />
@@ -81,10 +85,6 @@
 		<Unit filename="Win32_Service.cpp" />
 		<Unit filename="Win32_Service.hpp" />
 		<Unit filename="pch.cpp" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
