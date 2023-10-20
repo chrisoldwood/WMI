@@ -11,6 +11,11 @@
 #include <iterator>
 #include <algorithm>
 
+#ifndef _MSC_VER
+WCL_DECLARE_IFACETRAITS(IWbemServices, IID_IWbemServices);
+WCL_DECLARE_IFACETRAITS(IWbemClassObject, IID_IWbemClassObject);
+#endif
+
 namespace WMI
 {
 
@@ -53,9 +58,13 @@ bool Object::hasProperty(const tstring& name) const
 		throw Exception(result, m_object, TXT("Failed to retrieve the objects' property names"));
 
 	// Copy the property names to the output buffer.
-	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);	
+	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);
 
+#ifdef ANSI_BUILD
+    #error ANSI build not supported
+#else
 	return (std::find(strings.begin(), strings.end(), name) != strings.end());
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,9 +83,13 @@ size_t Object::getPropertyNames(PropertyNames& names, PropertyTypes types) const
 		throw Exception(result, m_object, TXT("Failed to retrieve the objects' property names"));
 
 	// Copy the property names to the output buffer.
-	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);	
+	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);
 
+#ifdef ANSI_BUILD
+    #error ANSI build not supported
+#else
 	std::copy(strings.begin(), strings.end(), std::insert_iterator<PropertyNames>(names, names.end()));
+#endif
 
 	return names.size();
 }

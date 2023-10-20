@@ -15,6 +15,11 @@
 #pragma comment(lib, "wbemuuid.lib")
 #endif
 
+#ifndef _MSC_VER
+WCL_DECLARE_IFACETRAITS(IWbemServices, IID_IWbemServices);
+WCL_DECLARE_IFACETRAITS(IWbemLocator, IID_IWbemLocator);
+#endif
+
 namespace WMI
 {
 
@@ -195,7 +200,7 @@ ObjectIterator Connection::execQuery(const tchar* query) const
 ////////////////////////////////////////////////////////////////////////////////
 //! Execute a method on an object.
 
-void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
+void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr /*object*/,
 							const tchar* path, const tchar* method, WCL::Variant& returnValue)
 {
 	ASSERT(connection.get() != nullptr);
@@ -228,7 +233,7 @@ void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr obj
 ////////////////////////////////////////////////////////////////////////////////
 //! Execute a method on the object.
 
-void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr object,
+void Connection::execMethod(IWbemServicesPtr connection, IWbemClassObjectPtr /*object*/,
 							const tchar* path, const tchar* method, IWbemClassObjectPtr arguments, WCL::Variant& returnValue)
 {
 	ASSERT(connection.get() != nullptr);

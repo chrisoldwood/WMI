@@ -8,6 +8,11 @@
 #include "Exception.hpp"
 #include <Core/BadLogicException.hpp>
 
+#ifndef _MSC_VER
+WCL_DECLARE_IFACETRAITS(IWbemClassObject, IID_IWbemClassObject);
+WCL_DECLARE_IFACETRAITS(IEnumWbemClassObject, IID_IEnumWbemClassObject);
+#endif
+
 namespace WMI
 {
 
