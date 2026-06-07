@@ -61,7 +61,7 @@ bool Object::hasProperty(const tstring& name) const
 	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);
 
 #ifdef ANSI_BUILD
-    #error ANSI build not supported
+	return (std::find(strings.begin(), strings.end(), Core::ansiToWide(name)) != strings.end());
 #else
 	return (std::find(strings.begin(), strings.end(), name) != strings.end());
 #endif
@@ -85,10 +85,13 @@ size_t Object::getPropertyNames(PropertyNames& names, PropertyTypes types) const
 	// Copy the property names to the output buffer.
 	WCL::VariantVector<BSTR> strings(array, VT_BSTR, true);
 
+	WCL::VariantVector<BSTR>::iterator it = strings.begin();
+	WCL::VariantVector<BSTR>::iterator end = strings.end();
+	for (; it != end; ++it)
 #ifdef ANSI_BUILD
-    #error ANSI build not supported
+		names.insert(Core::wideToAnsi(*it));
 #else
-	std::copy(strings.begin(), strings.end(), std::insert_iterator<PropertyNames>(names, names.end()));
+		names.insert(*it);
 #endif
 
 	return names.size();
