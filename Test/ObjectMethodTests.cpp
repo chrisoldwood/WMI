@@ -10,6 +10,7 @@
 #include <WMI/ObjectIterator.hpp>
 #include <WCL/Path.hpp>
 #include <WCL/Event.hpp>
+#include <vector>
 
 TEST_SET(ObjectMethod)
 {

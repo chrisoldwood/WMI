@@ -8,6 +8,7 @@
 #include <WMI/TypedObject.hpp>
 #include <WMI/Connection.hpp>
 #include <WCL/Event.hpp>
+#include <vector>
 
 class TestClass : public WMI::TypedObject<TestClass>
 {
@@ -65,7 +66,7 @@ TEST_CASE_TEARDOWN_END
 TEST_CASE("object of WMI base type can be constructed from an object of a WMI derived type")
 {
 	WMI::ObjectIterator	it = s_connection.execQuery(TXT("SELECT * FROM CIM_OperatingSystem"));
-	
+
 	TestWmiBaseClass object((*it).get(), s_connection);
 	tstring          className = object.getProperty<tstring>(TXT("__CLASS"));
 
