@@ -4,7 +4,7 @@ WMI Library
 Introduction
 ------------
 
-This C++ class library is a wrapper façade over the native Windows COM-based
+This C++ class library is a wrapper faÃ§ade over the native Windows COM-based
 WMI components.
 
 Documentation
@@ -25,3 +25,4 @@ Web:   http://www.chrisoldwood.com
 
 Chris Oldwood
 22nd October 2013
+# Thankyou
